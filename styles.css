@@ -1,0 +1,199 @@
+/*=== GLOBAL ===*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+:root {
+  --color-green: #079449;
+  --color-green-bold: #035027;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+button[type="submit"] {
+  background-color: var(--color-green);
+  color: white;
+  border: none;
+  margin: 5px 0;
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+  width: 170px;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--color-green-bold);
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  color: white;
+  padding: 15px 0;
+  position: fixed;
+  text-align: center;
+  background-color: var(--color-green);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/*=== LOGIN PAGE ===*/
+
+.container-login {
+  width: 100vh;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+}
+
+.logo-content, .login-content {
+  justify-self: center;
+  align-self: center;
+}
+
+.logo-content img {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.logo-content h1 {
+  color: var(--color-green);
+  font-size: 35px;
+}
+
+.header-content {
+  text-align: center;
+}
+
+.header-content img {
+  width: 80px;
+}
+
+.header-content h2 {
+  color: #767676;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.login-content .input-div {
+  padding: 5px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+/*=== CANDIDATES PAGE ===*/
+
+.header-candidates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.header-logo-content-candidates {
+  justify-self: end;
+}
+
+.header-logo-content-candidates img {
+  height: 100px;
+}
+
+.title-canditates {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.title-canditates h2 {
+  color: #767676;
+}
+
+.box-candidates {
+  width: 600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.candidate {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 6px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  grid-gap: 5px;
+}
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 5px;
+  grid-gap: 5px;
+}
+
+.avatar-candidate {
+  text-align: center;
+  justify-self: end;
+}
+
+.avatar-candidate img {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.name-candidate, .letters-candidate {
+  justify-self: center;
+}
+
+.name-candidate p, .letters-candidate p {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.radio-candidate {
+  align-items: center;
+  font-size: 10px;
+  text-align: center;
+}
+
+.button-candidate {
+  text-align: center;
+}
+
+/*=== CONFIRM PAGE ===*/
+
+.container-confirm {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.header-logo-content img {
+  height: 150px;
+}
+
+.header-title-content h2 {
+  color: var(--color-green);
+}
+
+.confirm-content-text h1 {
+  color: white;
+  padding: 5px;
+  border-radius: 2px;
+  background-color: var(--color-green);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
