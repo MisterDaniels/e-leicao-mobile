@@ -1,16 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, Image, Text, TouchableOpacity, Linking } from 'react-native';
+import { View, Image, Text, TouchableOpacity, TextInput, Button } from 'react-native';
+import { Formik } from 'formik';
+import * as Notifications from 'expo-notifications';
 
 import logoImg from '../../assets/images/logo.png';
-import avatarImg from '../../assets/images/avatar.svg';
+import AvatarSvg from '../../assets/images/avatar.svg';
 
 import styles from './styles';
 
+import api from '../../services/api';
+
 export default function Login() {
+
+    const [loading, setLoading] = useState(false);
 
     const navigation = useNavigation();
     const route = useRoute();
+
+    Notifications.scheduleNotificationAsync({
+        content: {
+            title: 'Hora de votar!',
+            body: 'Decida quem deve governar o Brasil.',
+        },
+        trigger: {
+            seconds: 60 * 20,
+            repeats: true
+        },
+    });
+
+    async function login(values) {
+        if (!values) {
+            return;
+        }
+
+        setLoading(true);
+
+        api.get(`/api/auth?et=${values.et}&password=${values.password}`).then(res => {
+                if (res.status != 200) {
+                    return;
+                } 
+
+                navigation.navigate('Vote', { token: res.data.token })
+            }).catch(err => {
+                console.log(err);
+            });
+
+        setLoading(false);
+    }
 
     return (
         <View style={ styles.container } >
@@ -19,11 +56,41 @@ export default function Login() {
                 <TouchableOpacity>
                     <Image style={ styles.logo } source={ logoImg } />
                 </TouchableOpacity>
-                <Text style={ styles.title } >e-leição</Text>
+                <Text style={[ styles.title, styles.text ]} >e-leição</Text>
             </View>
 
             <View style={ styles.form } >
-                <Image style={ styles.avatar } source={ avatarImg } />
+                <AvatarSvg style={ styles.avatar } width={80} height={80} />
+                <Text style={[ styles.subtitle, styles.text ]} >BEM-VINDO(A)...</Text>
+                <Formik
+                    initialValues={{ et: '', password: '' }}
+                    onSubmit={ values => login(values) }>
+                    {({ handleChange, handleBlur, handleSubmit, values }) => (
+                        <View style={ styles.inputs } >
+                            <Text style={ styles.text } >E-Título</Text>
+                            <TextInput 
+                                style={ styles.input }
+                                onChangeText={ handleChange('et') }
+                                onBlur={ handleBlur('et') }
+                                value={ values.et }
+                                autoCompleteType='username'
+                                autoFocus={ true } />
+                            <View style={ styles.line } />
+                            <Text style={ styles.text }>Senha</Text>
+                            <TextInput 
+                                style={ styles.input }
+                                onChangeText={ handleChange('password') }
+                                onBlur={ handleBlur('password') }
+                                value={ values.password }
+                                autoCompleteType='password'
+                                secureTextEntry={ true } />
+                            <View style={ styles.line } />
+                            <TouchableOpacity style={ styles.button } onPress={ handleSubmit }>
+                                <Text style={[ styles.text, styles.buttonText ]} >ENTRAR</Text>
+                            </TouchableOpacity>
+                        </View>
+                    )}
+                </Formik>
             </View>
 
         </View>

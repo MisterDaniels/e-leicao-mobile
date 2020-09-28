@@ -5,7 +5,6 @@ export default StyleSheet.create({
 
     container: {
         flex: 1,
-        alignItems: 'center',
         justifyContent: 'center',
         paddingTop: Constants.statusBarHeight + 20,
         backgroundColor: '#FAFAFA'
@@ -21,9 +20,9 @@ export default StyleSheet.create({
     },  
 
     title: {
-        fontSize: 35,
+        fontSize: 22,
         color: '#079449',
-        marginTop: 10
+        marginLeft: 20
     },
 
     subtitle: {
