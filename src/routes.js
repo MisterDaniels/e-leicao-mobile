@@ -7,6 +7,7 @@ const AppStack = createStackNavigator();
 import Login from './pages/Login';
 import Vote from './pages/Vote';
 import ConfirmVote from './pages/ConfirmVote';
+import Voted from './pages/Voted';
 
 export default function Routes() {
     return (
@@ -16,6 +17,7 @@ export default function Routes() {
                 <AppStack.Screen name="Login" component={ Login } />
                 <AppStack.Screen name="Vote" component={ Vote } />
                 <AppStack.Screen name="ConfirmVote" component={ ConfirmVote } />
+                <AppStack.Screen name="Voted" component={ Voted } />
             </AppStack.Navigator>
 
         </NavigationContainer>

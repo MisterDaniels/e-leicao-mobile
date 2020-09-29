@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { View, Image, Text, TouchableOpacity, TextInput, Button } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { View, Image, Text, TouchableOpacity, TextInput } from 'react-native';
 import { Formik } from 'formik';
 import * as Notifications from 'expo-notifications';
 
@@ -13,10 +13,7 @@ import api from '../../services/api';
 
 export default function Login() {
 
-    const [loading, setLoading] = useState(false);
-
     const navigation = useNavigation();
-    const route = useRoute();
 
     Notifications.scheduleNotificationAsync({
         content: {
@@ -34,21 +31,19 @@ export default function Login() {
             return;
         }
 
-        setLoading(true);
-
-        console.log(`/api/auth?et=${values.et}&password=${values.password}`);
-
         api.get(`/api/auth?et=${values.et}&password=${values.password}`).then(res => {
                 if (res.status != 200) {
                     return;
                 } 
 
-                navigation.navigate('Vote', { token: res.data.token })
+                if (res.data.has_voted) {
+                    return navigation.navigate('Voted');    
+                }
+
+                navigation.navigate('Vote', { token: res.data.token });
             }).catch(err => {
                 console.log(err);
             });
-
-        setLoading(false);
     }
 
     return (

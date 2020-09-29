@@ -10,8 +10,6 @@ import styles from './styles';
 import api from '../../services/api';
 
 export default function Vote() {
-    const [loading, setLoading] = useState(false);
-
     const navigation = useNavigation();
     const route = useRoute();
 
@@ -23,15 +21,7 @@ export default function Vote() {
     }
 
     async function vote() {
-        if (loading) {
-            
-        }
-
-        setLoading(true);
         const soundObject = new Audio.Sound();
-
-        console.log(token);
-        console.log(candidate._id);
 
         api.post(`/api/vote?secret_token=${token}&candidate_id=${candidate._id}`).then(res => {
             try {
@@ -40,8 +30,6 @@ export default function Vote() {
               
                 soundObject.unloadAsync();
 
-                console.log('votado');
-
                 Notifications.dismissAllNotificationsAsync();
 
                 navigation.navigate('Login');
@@ -49,10 +37,8 @@ export default function Vote() {
                 console.log(err);
             }
 
-            setLoading(false);
         }).catch(err => {
             console.log(err);
-            setLoading(false);
         });
     }
 
