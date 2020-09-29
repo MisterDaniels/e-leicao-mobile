@@ -43,6 +43,8 @@ export default function Vote() {
                 console.log('votado');
 
                 Notifications.dismissAllNotificationsAsync();
+
+                navigation.navigate('Login');
             } catch (err) {
                 console.log(err);
             }
@@ -59,24 +61,27 @@ export default function Vote() {
             
             <Text style={[ styles.text, styles.title ]} >Tem certeza?</Text>
             
-            <Image style={ styles. avatar } source={ candidate.avatar } />
-            <Text style={ styles.text, styles.name }>{ candidate.name }</Text>
-            <Text style={ styles.text, styles.number }>{ candidate.number }</Text>
-            <Text style={ styles.text, styles.acronym }>{ candidate.acronym }</Text>
+            <View style={ styles.candidate }>
+                <Image style={ styles.avatar } source={{ uri: `${candidate.avatar}` }} />
+                <Text style={ styles.text, styles.name }>{ candidate.name }</Text>
+                <View style={ styles.party }>
+                    <Text style={ styles.text, styles.number }>{ candidate.number }</Text>
+                    <Text style={ styles.text, styles.acronym }>{ candidate.acronym }</Text>
+                </View>
 
-            <TouchableOpacity
-                style={ styles.voteButtom }
-                onPress={ () => vote() }>
-                <Text style={ styles.text }>Votar</Text>
-                <Feather name="arrow-right" size={ 16 } color="#079449" />
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={ styles.voteButtom }
+                    onPress={ () => vote() }>
+                    <Text style={[ styles.text, styles.buttonText ]}>Votar</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                style={ styles.voteButtom }
-                onPress={ navigateBack }>
-                <Text style={ styles.text }>Voltar</Text>
-                <Feather name="arrow-left" size={ 16 } color="#767676" />
-            </TouchableOpacity>
+                <TouchableOpacity
+                    style={ styles.backButton }
+                    onPress={ navigateBack }>
+                    <Feather style={ styles.svg } name="arrow-left" size={ 16 } color="#767676" />
+                    <Text style={[ styles.text ]}>Voltar</Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     );

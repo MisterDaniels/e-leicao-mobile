@@ -46,24 +46,26 @@ export default function Vote() {
             <FlatList
                 data={ candidates }
                 style={ styles.candidatesList }
-                keyExtractor={ candidate => String(candidate.id) }
+                keyExtractor={ candidate => String(candidate._id) }
                 showsVerticalScrollIndicator={ false }
                 onEndReached={ loadCandidates }
                 onEndReachedThreshold={ 0.2 }
                 renderItem={({ item: candidate }) => (
                     <View style={ styles.candidate }>
-                        <Image style={ styles. avatar } source={ candidate.avatar } />
+                        <Image style={ styles.avatar } source={{ uri: `${candidate.avatar}` }} />
 
-                        <View>
+                        <View style={ styles.details }>
                             <Text style={ styles.text, styles.name }>{ candidate.name }</Text>
-                            <Text style={ styles.text, styles.number }>{ candidate.number }</Text>
-                            <Text style={ styles.text, styles.acronym }>{ candidate.acronym }</Text>
+                            <View style={ styles.party }>
+                                <Text style={ styles.text, styles.number }>{ candidate.number }</Text>
+                                <Text style={ styles.text, styles.acronym }>{ candidate.acronym }</Text>
+                            </View>
 
                             <TouchableOpacity
                                 style={ styles.voteButtom }
                                 onPress={ () => navigateToConfirmVote(candidate) }>
-                                <Text style={ styles.text }>Votar</Text>
-                                <Feather name="arrow-right" size={ 16 } color="#079449" />
+                                <Text style={ styles.text, styles.buttonText }>Votar</Text>
+                                <Feather style={ styles.svg } name="arrow-right" size={ 16 } color="#ffffff" />
                             </TouchableOpacity>
                         </View>
                     </View>

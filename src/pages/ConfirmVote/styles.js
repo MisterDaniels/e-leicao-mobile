@@ -5,14 +5,9 @@ export default StyleSheet.create({
 
     container: {
         flex: 1,
-        justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight + 20,
+        alignItems: 'center',
+        paddingTop: Constants.statusBarHeight + 50,
         backgroundColor: '#FAFAFA'
-    },
-
-    logo: {
-        width: 150,
-        height: 150
     },
 
     text: {
@@ -22,56 +17,71 @@ export default StyleSheet.create({
     title: {
         fontSize: 22,
         color: '#079449',
-        marginLeft: 20
+        marginLeft: '-30%',
+        marginBottom: '20%'
     },
-
-    subtitle: {
-        fontSize: 12,
-        color: '#767676'
-    },
-
-    form: {
+    
+    candidate: {
+        flex: 1,
+        flexDirection: 'column',
         alignItems: 'center',
         padding: 24,
         borderRadius: 8,
         backgroundColor: '#FFF',
-        marginTop: 28,
         width: '80%'
     },
-
+    
     avatar: {
-        marginBottom: 10
+        width: 200,
+        height: 200,
+        borderRadius: 8
     },
 
-    inputs: {
-        width: '100%',
-        marginTop: 10
+    name: {
+        fontWeight: 'bold',
+        fontSize: 30,
+        marginTop: 20
     },
 
-    input: {
-        borderWidth: 1,
-        borderColor: '#000',
-        borderRadius: 2,
-        paddingHorizontal: 10,
-        paddingVertical: 5
+    party: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '60%',
+        marginTop: 20
     },
 
-    button: {
-        marginTop: 10,
-        padding: 10,
-        backgroundColor:'#079449',
-        borderRadius: 2
+    number: {
+        fontWeight: 'bold',
+        fontSize: 24
+    },
+
+    acronym: {
+        fontSize: 16
+    },
+
+    voteButtom: {
+        width: '60%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#079449',
+        paddingVertical: 5,
+        borderRadius: 8
     },
 
     buttonText: {
-        color: '#fff',
-        alignSelf: 'center'
+        color: '#ffffff',
+        fontSize: 28
     },
 
-    line: {
-        borderWidth: 0.5,
-        borderColor: '#d9d9d9',
-        margin: 10
+    backButton: {
+        flex: 1,
+        flexDirection: 'row',
+        marginTop: 30
+    },
+
+    svg: {
+        marginRight: 10
     }
 
 });

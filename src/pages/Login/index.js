@@ -36,6 +36,8 @@ export default function Login() {
 
         setLoading(true);
 
+        console.log(`/api/auth?et=${values.et}&password=${values.password}`);
+
         api.get(`/api/auth?et=${values.et}&password=${values.password}`).then(res => {
                 if (res.status != 200) {
                     return;

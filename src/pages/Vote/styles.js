@@ -6,13 +6,9 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight + 20,
+        alignItems: 'center',
+        paddingTop: Constants.statusBarHeight + 50,
         backgroundColor: '#FAFAFA'
-    },
-
-    logo: {
-        width: 150,
-        height: 150
     },
 
     text: {
@@ -22,56 +18,77 @@ export default StyleSheet.create({
     title: {
         fontSize: 22,
         color: '#079449',
-        marginLeft: 20
+        marginLeft: '-10%',
+        marginBottom: '20%'
     },
 
     subtitle: {
         fontSize: 12,
         color: '#767676'
     },
-
-    form: {
-        alignItems: 'center',
+    
+    candidate: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignSelf: 'center',
         padding: 24,
         borderRadius: 8,
         backgroundColor: '#FFF',
-        marginTop: 28,
-        width: '80%'
+        width: '80%',
+        marginBottom: 20
     },
 
+    details: {
+        flex: 1,
+        flexDirection: 'column',
+        marginLeft: 20
+    },
+    
     avatar: {
-        marginBottom: 10
+        width: 100,
+        height: 100,
+        borderRadius: 8
     },
 
-    inputs: {
+    name: {
+        fontWeight: 'bold',
+        fontSize: 14
+    },
+
+    party: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },
+
+    number: {
+        fontWeight: 'bold',
+        fontSize: 24
+    },
+
+    acronym: {
+        alignSelf: 'center',
+        fontSize: 16
+    },
+
+    voteButtom: {
+        flex: 1,
+        flexDirection: 'row',
         width: '100%',
-        marginTop: 10
-    },
-
-    input: {
-        borderWidth: 1,
-        borderColor: '#000',
-        borderRadius: 2,
+        alignItems: 'center',
+        backgroundColor: '#079449',
         paddingHorizontal: 10,
-        paddingVertical: 5
-    },
-
-    button: {
-        marginTop: 10,
-        padding: 10,
-        backgroundColor:'#079449',
         borderRadius: 2
     },
 
     buttonText: {
-        color: '#fff',
-        alignSelf: 'center'
+        color: '#ffffff',
+        marginRight: 5
     },
 
-    line: {
-        borderWidth: 0.5,
-        borderColor: '#d9d9d9',
-        margin: 10
+    svg: {
+        alignSelf: 'center'
     }
 
 });
